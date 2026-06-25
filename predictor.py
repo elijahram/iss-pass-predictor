@@ -1,15 +1,16 @@
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-URL = "http://api.open-notify.org/iss-now.json"
 
-def get_iss_passes(lat, lon, n=5):
-    params = {
-        "lat": lat,
-        "lon": lon,
-        "n": n      # number of passes to return
-    }
-    response = requests.get(URL, params=params)
-    print(response.json())
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+BASE_URL = "https://api.n2yo.com/rest/v1/satellite/"
 
-get_iss_passes(34.0522, -118.2437)
+def get_iss_passes(lat, lon, alt=0, seconds=10):
+    url = f"{BASE_URL}/positions/25544/{lat}/{lon}/{alt}/{seconds}&apiKey={API_KEY}"
+    response = requests.get(url)
+    return response.json()
+
+print(get_iss_passes(34.0522, -118.2437))
