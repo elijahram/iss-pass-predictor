@@ -16,4 +16,4 @@ python predictor.py
 
 
 ## What I Learned
-Learned about REST API's (Representational State Transfer Application Programming Interface) and made a get request to n2yo's satellites API. Here we were able to use a NORAD ID in order to track information about specific satallites, where we formatted the json response into legible information for the user. Translated the timestamp into something more readable using datetime
+Made a GET request to n2yo's REST API. I had to create an API key on their website, and store it in a .env file which was added to my .gitignore file. I use a NORAD ID in order to track information about specific satellites, where I then formatted the json response into legible information for the user. Translated the timestamp into something more readable using datetime otherwise it would just be a long integer that has no meaning to normal users.
